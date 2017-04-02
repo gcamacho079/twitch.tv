@@ -1,6 +1,24 @@
 #header-logo {
   display: block;
-  width: 40%;
-  max-width: 400px;
-  margin: 0 auto;
+  width: 80%;
+  max-width: 320px;
+  margin: 0 auto 1em auto;
+}
+
+body {
+  text-align: center;
+}
+
+.container {
+  padding-top: 1em;
+  width: 85%;
+  max-width: 600px;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: #2f97c1;
 }
