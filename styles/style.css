@@ -22,3 +22,20 @@ p {
 a {
   color: #2f97c1;
 }
+
+.icon {
+  max-width: 60px;
+  margin: 0 auto;
+}
+
+.online {
+  background-color: #f7ffe4;
+}
+
+.offline {
+  background-color: #f4f3f3;
+}
+
+.row {
+  padding-top: 1em;
+}
