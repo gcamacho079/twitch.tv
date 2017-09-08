@@ -1,13 +1,8 @@
 var twitchStreamers = ["freecodecamp", "KayPikeFashion", "ProPandaPlays", "meldamiriel", "MelodyZE", "itsHafu"];
-var displayName;
-var description;
-var imageSource;
-var streamLink;
-var userRow;
+var displayName, description, imageSource, streamLink, userRow, userStatus;
 var column1;
 var column2;
 var column3;
-var userStatus;
 
 $(document).ready(function() {
   for (i = 0; i < twitchStreamers.length; i++) {
@@ -21,7 +16,7 @@ $(document).ready(function() {
       column2 = "<div class='col-sm-4'><p><a href='" + streamLink + "' target='_blank'>" + displayName + "</a></p></div>";
       column3 = "<div class='col-sm-5'><p>" + description + "</p></div>";
 
-      /*
+
       $.getJSON("https://wind-bow.gomix.me/twitch-api/streams/" + displayName + "?callback=?", function(data) {
         if (data.stream == null) {
           userStatus = "offline";
@@ -30,7 +25,7 @@ $(document).ready(function() {
           userStatus = "online";
         }
       })
-      */
+
 
       userRow = "<div class='row'>" + column1 + column2 + column3 + "</div>";
       $(userRow).appendTo(".streamFeed");
