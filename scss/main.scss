@@ -1,0 +1,92 @@
+$color-primary: #7D5BBE;
+$color-light-accent: #FAF9FA;
+$color-dark-accent: #011627;
+$color-backsplash: #FFFFFF;
+$color-active: #79DE75;
+$color-inactive: #F45B5B;
+
+
+$font-stack-primary: 'Open Sans', sans-serif;
+$font-stack-secondary: 'Dosis', sans-serif;
+
+/*************************************
+ MIXINS
+*************************************/
+
+@mixin box-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $color: #CCC) {
+  -webkit-box-shadow: $horizontal $vertical $blur $color;
+  -moz-box-shadow: $horizontal $vertical $blur $color;
+  box-shadow: $horizontal $vertical $blur $color;
+}
+
+@mixin transition-time($transition-time) {
+  -moz-transition-duration: $transition-time;
+  -o-transition-duration: $transition-time;
+  -webkit-transition-duration: $transition-time;
+  transition-duration: $transition-time;
+}
+
+@mixin button($color) {
+  @include button-static;
+  @include transition-time(.5s);
+
+  background-color: $color;
+  border-color: mix(black, $color, 25%);
+
+  &:hover {
+    background-color: $color-dark-accent;
+    border-color: $color-dark-accent;
+    color: $color-light-accent;
+  }
+}
+
+@mixin button-static {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0.5em 0.8em;
+}
+
+/*************************************
+OTHER
+*************************************/
+
+body {
+  text-align: center;
+  background-color: $color-backsplash;
+  color: $color-primary;
+  font-family: $font-stack-primary;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.header-logo {
+  width: 33%;
+}
+
+.user-card {
+  background-color: $color-light-accent;
+  border-radius: 10px;
+  @include box-shadow;
+  padding: 1em 2em;
+}
+
+.thumbnail {
+  max-width: 100px;
+}
+
+h1 {
+  font-family: $font-stack-secondary;
+}
+
+.status-selector {
+  @include button($color-light-accent);
+  width: 30%;
+}
+
+.selected {
+  @include button($color-primary);
+  color: $color-light-accent;
+}
