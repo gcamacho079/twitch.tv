@@ -1,17 +1,12 @@
 $color-primary: #7D5BBE;
-$color-light-accent: #FAF9FA;
-$color-dark-accent: #011627;
 $color-backsplash: #FFFFFF;
-$color-active: #79DE75;
-$color-inactive: #F45B5B;
+$color-accent: #8CFBDE;
+$color-link-active: #3A86FF;
 
+$font-stack-primary: 'Arimo', sans-serif;
+$font-stack-secondary: 'Roboto', sans-serif;
 
-$font-stack-primary: 'Open Sans', sans-serif;
-$font-stack-secondary: 'Dosis', sans-serif;
-
-/*************************************
- MIXINS
-*************************************/
+/** Mixins **/
 
 @mixin box-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $color: #CCC) {
   -webkit-box-shadow: $horizontal $vertical $blur $color;
@@ -26,67 +21,149 @@ $font-stack-secondary: 'Dosis', sans-serif;
   transition-duration: $transition-time;
 }
 
+/** Predefined **/
+
+%roundify {
+  border-radius: 8px;
+}
+
+%make-hero {
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+%pretty-link {
+  color: $color-primary;
+  text-decoration: none;
+  position: relative;
+
+  &:after {
+    content:'';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid $color-primary;
+    transition: 0.4s;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+}
+
+/** Structure **/
+
+body {
+  background-color: $color-backsplash;
+  font-family: $font-stack-primary;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
+
+/** Header **/
+
+.header-logo {
+  max-width: 120px;
+}
+
+/** Hero Section **/
+
+.hero-section {
+  @extend %make-hero;
+  background-image: url("../images/pexels-photo-461497.jpeg");
+}
+
+.hero-section__headline {
+  color: #FFFFFF;
+}
+
+.hero-section__highlight {
+  color: $color-accent;
+}
+
+/** All Sections **/
+
+.content {
+  padding: .7em 0;
+}
+
+.section__title {
+  font-family: $font-stack-primary;
+  text-align: left;
+  font-weight: 700;
+  position: relative;
+
+  &:after {
+    content:'';
+    position: absolute;
+    top: 30px;
+    left: 1px;
+    width: 2rem;
+    border-bottom: 5px solid $color-primary;
+  }
+}
+
+/** Media Cards **/
+
+.media-card {
+  @extend %roundify;
+  padding: 1em .25em;
+}
+
+.media-card__body {
+  text-align: left;
+  font-family: $font-stack-primary;
+  margin-left: 110px;
+}
+
+.media-card__thumbnail {
+  @extend %roundify;
+  max-width: 100px;
+  float: left;
+}
+
+.media-card__headline {
+  @extend %pretty-link;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.media-card__info {
+  font-family: $font-stack-secondary;
+}
+
+.media-card::after {
+  content:"";
+  display: block;
+  clear:both;
+}
+
+/** Buttons **/
+
 @mixin button($color) {
   @include button-static;
   @include transition-time(.5s);
 
   background-color: $color;
   border-color: mix(black, $color, 25%);
-
-  &:hover {
-    background-color: $color-dark-accent;
-    border-color: $color-dark-accent;
-    color: $color-light-accent;
-  }
 }
 
 @mixin button-static {
+  @extend %roundify;
   border: 1px solid;
-  border-radius: 5px;
-  padding: 0.5em 0.8em;
-}
-
-/*************************************
-OTHER
-*************************************/
-
-body {
-  text-align: center;
-  background-color: $color-backsplash;
-  color: $color-primary;
-  font-family: $font-stack-primary;
-}
-
-.wrapper {
-  margin: 0 auto;
-  width: 80%;
-}
-
-.header-logo {
-  width: 33%;
-}
-
-.user-card {
-  background-color: $color-light-accent;
-  border-radius: 10px;
-  @include box-shadow;
-  padding: 1em 2em;
-}
-
-.thumbnail {
-  max-width: 100px;
-}
-
-h1 {
-  font-family: $font-stack-secondary;
+  padding: 0.8em 0.8em;
 }
 
 .status-selector {
-  @include button($color-light-accent);
   width: 30%;
 }
 
 .selected {
   @include button($color-primary);
-  color: $color-light-accent;
 }

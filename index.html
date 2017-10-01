@@ -4,32 +4,36 @@
   <title>Twitch.tv Viewer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans|Dosis:400,800" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Roboto" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
-  <div class="wrapper">
+  <div class="wrapper content">
     <img class="header-logo" src="images/Twitch_logo.png">
-    <p><strong>Find out who's streaming now on Twitch</strong></p>
+  </div>
 
+  <div class="hero-section content">
+    <div class="wrapper">
+      <h1 class="hero-section__headline">Find out who's streaming <span class="hero-section__highlight">right now</span></h1>
+    </div>
 
+  </div>
+
+  <div class="wrapper content">
     <section class="streamFeed">
-      <div class="button-row">
-        <button class="status-selector selected">All</button>
-        <button class="status-selector">Online</button>
-        <button class="status-selector">Offline</button>
-      </div>
+      <h2 class="section__title">Streamers</h2>
 
-      <div class="user-card">
-        <img class="thumbnail" src="images/bubbles.png" alt="Woman blowing bubble">
-        <div class="info-blurb">
-          <a href="#">FreeCodeCamp</a>
-          <p>Other things in here</p>
+      <div class="media-card">
+        <img class="media-card__thumbnail" src="images/download.png" alt="Woman blowing bubble">
+        <div class="media-card__body content">
+          <a href="#" class="media-card__headline">FreeCodeCamp</a>
+          <p class="media-card__info">Learn to code, then practice by building projects for nonprofits</p>
         </div>
       </div>
+
     </section>
 
 
