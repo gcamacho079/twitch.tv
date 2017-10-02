@@ -1,7 +1,6 @@
 $color-primary: #7D5BBE;
 $color-backsplash: #FFFFFF;
 $color-accent: #8CFBDE;
-$color-link-active: #3A86FF;
 
 $font-stack-primary: 'Arimo', sans-serif;
 $font-stack-secondary: 'Roboto', sans-serif;
@@ -21,6 +20,16 @@ $font-stack-secondary: 'Roboto', sans-serif;
   transition-duration: $transition-time;
 }
 
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 /** Predefined **/
 
 %roundify {
@@ -32,6 +41,10 @@ $font-stack-secondary: 'Roboto', sans-serif;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+%pad-it {
+    padding: .7em 0;
 }
 
 %pretty-link {
@@ -62,6 +75,8 @@ body {
 }
 
 .wrapper {
+  @include word-wrap;
+  @extend %pad-it;
   margin: 0 auto;
   width: 90%;
 }
@@ -77,10 +92,18 @@ body {
 .hero-section {
   @extend %make-hero;
   background-image: url("../images/pexels-photo-461497.jpeg");
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hero-section__container {
+  width: 60%;
 }
 
 .hero-section__headline {
   color: #FFFFFF;
+  font-size: 2em;
 }
 
 .hero-section__highlight {
@@ -88,10 +111,6 @@ body {
 }
 
 /** All Sections **/
-
-.content {
-  padding: .7em 0;
-}
 
 .section__title {
   font-family: $font-stack-primary;
@@ -113,7 +132,7 @@ body {
 
 .media-card {
   @extend %roundify;
-  padding: 1em .25em;
+  @extend %pad-it;
 }
 
 .media-card__body {
@@ -142,28 +161,4 @@ body {
   content:"";
   display: block;
   clear:both;
-}
-
-/** Buttons **/
-
-@mixin button($color) {
-  @include button-static;
-  @include transition-time(.5s);
-
-  background-color: $color;
-  border-color: mix(black, $color, 25%);
-}
-
-@mixin button-static {
-  @extend %roundify;
-  border: 1px solid;
-  padding: 0.8em 0.8em;
-}
-
-.status-selector {
-  width: 30%;
-}
-
-.selected {
-  @include button($color-primary);
 }
